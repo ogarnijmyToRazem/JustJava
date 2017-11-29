@@ -11,6 +11,7 @@ package com.example.android.justjava;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 /**
@@ -30,8 +31,10 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+        CheckBox whippedCreamCheckbox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
+        boolean hasWhippedCream = whippedCreamCheckbox.isChecked();
         int price = calculatePrice();
-        String priceMessage = createOrderSummary(price);
+        String priceMessage = createOrderSummary(price, hasWhippedCream);
         displayMessage(priceMessage);
     }
 
@@ -47,10 +50,12 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * @param price price of an order
+     * @param hasWhippedCream check if whipped cream was ordered
      * @return message for order
      */
-    private String createOrderSummary(int price) {
+    private String createOrderSummary(int price, boolean hasWhippedCream) {
         String message = "Name: Kaptain Kunal" +
+                "\nAdd whipped cream? " + hasWhippedCream +
                 "\nQuantity: " + quantity +
                 "\nTotal: $" + price +
                 "\nThank you!";
@@ -76,9 +81,9 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method displays the given quantity value on the screen.
      */
-    private void displayQuantity(int integer) {
+    private void displayQuantity(int numberOfCoffees) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + integer);
+        quantityTextView.setText("" + numberOfCoffees);
     }
 
     /**
