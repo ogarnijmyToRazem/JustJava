@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         boolean hasChocolate = chocolateCheckbox.isChecked();
         EditText nameText = (EditText) findViewById(R.id.name_view);
         String name = nameText.getText().toString();
-        int price = calculatePrice();
+        int price = calculatePrice(hasChocolate, hasWhippedCream);
         String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate, name);
         displayMessage(priceMessage);
     }
@@ -49,8 +49,15 @@ public class MainActivity extends AppCompatActivity {
      * /* @param quantity is the number of cups of coffee ordered
      * /* @param priceForOneCup the price of 1 cup
      */
-    private int calculatePrice() {
-        return quantity * 5;
+    private int calculatePrice(boolean hasChocolate, boolean hasWhippedCream) {
+        int pricePerOneCup = 5;
+        if (hasChocolate) {
+            pricePerOneCup += 2;
+        }
+        if (hasWhippedCream) {
+            pricePerOneCup += 1;
+        }
+        return quantity * pricePerOneCup;
     }
 
     /**
