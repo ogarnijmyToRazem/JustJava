@@ -8,6 +8,8 @@ package com.example.android.justjava;
  */
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -41,7 +43,13 @@ public class MainActivity extends AppCompatActivity {
         String name = nameText.getText().toString();
         int price = calculatePrice(hasChocolate, hasWhippedCream);
         String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate, name);
-        displayMessage(priceMessage);
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(intent.EXTRA_TEXT, priceMessage);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "JustJava order for " + name);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
     /**
@@ -59,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
             pricePerOneCup += 1;
         }
         return quantity * pricePerOneCup;
+    }
+
+    public void composeEmail(String subject, String text) {
     }
 
     /**
@@ -81,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the plus button is clicked.
      */
     public void increment(View view) {
-        if(quantity==100){
-            Toast.makeText(this,"You can't order more then 100 cups of coffee",Toast.LENGTH_SHORT).show();
+        if (quantity == 100) {
+            Toast.makeText(this, "You can't order more then 100 cups of coffee", Toast.LENGTH_SHORT).show();
             return;
         }
         quantity = quantity + 1;
@@ -93,8 +104,8 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the minus button is clicked.
      */
     public void decrement(View view) {
-        if(quantity==1){
-            Toast.makeText(this,"You can't order less then 1 cups of coffee",Toast.LENGTH_SHORT).show();
+        if (quantity == 1) {
+            Toast.makeText(this, "You can't order less then 1 cups of coffee", Toast.LENGTH_SHORT).show();
             return;
         }
         quantity = quantity - 1;
@@ -107,13 +118,5 @@ public class MainActivity extends AppCompatActivity {
     private void displayQuantity(int numberOfCoffees) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + numberOfCoffees);
-    }
-
-    /**
-     * This method displays the given text on the screen.
-     */
-    private void displayMessage(String message) {
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
-        orderSummaryTextView.setText(message);
     }
 }

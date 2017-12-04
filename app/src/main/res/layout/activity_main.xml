@@ -21,8 +21,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
             android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
             android:text="Toppings"
             android:textAllCaps="true" />
 
@@ -80,22 +80,6 @@
                 android:text="+" />
 
         </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Order summary"
-            android:textAllCaps="true" />
-
-        <TextView
-            android:id="@+id/order_summary_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:text="$10"
-            android:textColor="#000000"
-            android:textSize="16sp" />
 
         <Button
             android:layout_width="wrap_content"
