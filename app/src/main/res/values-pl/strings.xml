@@ -11,7 +11,7 @@
     <string name="order_summary_whipped_cream">Dodać bitą śmietanę? <xliff:g id="whipped_cream" example="true">%s</xliff:g></string>
     <string name="order_summary_chocolate">Dodać czekoladę? <xliff:g id="chocolate" example="true">%s</xliff:g></string>
     <string name="order_summary_quantity">Ilość: <xliff:g id="quantity" example="2">%d</xliff:g></string>
-    <string name="order_summary_total">Suma: $<xliff:g id="total" example="10">%d</xliff:g></string>
+    <string name="order_summary_total">Suma: <xliff:g id="total" example="$10">%s</xliff:g></string>
     <string name="thank_you">Dziękujemy!</string>
     <string name="increment_toast">Nie możesz zamówić więcej niż 100 filiżanek kawy</string>
     <string name="decrement_toast">Nie możesz zamówić mniej niż jedną filiżankę kawy</string>
